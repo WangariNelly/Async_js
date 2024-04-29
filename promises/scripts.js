@@ -10,9 +10,13 @@ promise.then(
     // The first argument of .then is a function that handles the resolved value
     result => {
         console.log('Result:', result);
-    },
+    })
+
+     .catch((error) =>{
     // The second argument of .then is a function that handles any errors
-    error => {
-        console.error('Error:', error); 
-    }
-);
+        console.error('Error:', error.message); 
+        throw new Error("Failed to log results: " + Error.message);
+})
+   .finally(() => {
+    console.log("Code executed!");
+});
